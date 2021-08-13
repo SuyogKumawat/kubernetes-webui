@@ -1,0 +1,143 @@
+<script>
+function run(){
+var command = document.getElementById("in").value
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://192.168.43.135/cgi-bin/webkube.py?x=" + command, true)
+xhr.send()
+xhr.onload = function (){
+var output=xhr.responseText;
+document.getElementById("val").innerHTML=output;
+}
+}
+</script>
+<html>
+<head>
+<style>
+body {
+  background-image: url('bg.gif');
+  background-size:1600px 760px;
+}
+
+.header{
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+p{
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    font-family: fantasy;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+  outline: none;
+  background-color: black;
+  font-size: large;
+  color: aliceblue;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+input[type=text]:focus {
+  background-color: lightslategrey;
+}
+
+.button{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.button:hover {background-color: grey}
+
+
+.op{
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    font-family: fantasy;
+    padding: 15px 12px;
+}
+
+.myDiv{
+   text-align: center;
+   font-size: 20px;
+   color: white;
+   position:absolute;
+   top:300px;
+   left:200px;
+   right:100px;
+   line-height: 3;
+   padding: 15px 12px;
+   font-weight: bold;
+}
+.myDiv2{
+   text-align: left;
+   font-size: 0px;
+   color: white;
+   position:absolute;
+   top:200px;
+   left:0px;
+   right:1240px;
+   line-height: 0.1;
+   font-weight: bold;
+   border : 2px solid gray;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="header">
+        <h2 style="color:Silver;">Kubernetes Web App</h2>
+        </div>
+        
+        <b><center style= "font-size: 20px;">[root@dockerhost]# <input id= "in" type="text"/></center>
+        </b>
+        <br>
+        </br>
+        <div style="text-align:center">
+            <button id="f" class="button" onclick="run()">ENTER</button>
+            </div>
+            <div class='op'>
+                <marquee width="60%" direction="right" height="100px"></marquee>
+            </div>
+            <pre>
+                 <div class="myDiv"  id='val'>
+                </div>
+                </pre>
+	      <pre>
+                 <div class="myDiv2">  <p style="color:Green;"> User Manual: </p> 
+
+		   <p> 1. Launch pod "name" </p>
+		   <p> 2. List all the pods </p>
+		   <p> 3. Launch deployment "name" </p>
+		   <p> 4. scale deployment "name" </p>
+                   <p> 5. List all deployments </p>
+		   <p> 6. Delete Deployment "name" </p>
+		   <p> 7. List services </p>
+	           <p> 8. Expose deployment "name"</br> </p> <p> to port "no" </p>
+                   <p> 9. Remove service "name" </p>
+		   <p> 10. Delete all the resources </p>
+  
+                </div>
+            </body>
+            </html>
